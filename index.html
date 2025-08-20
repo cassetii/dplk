@@ -46,8 +46,8 @@
 
         .calculator-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
             padding: 40px;
             align-items: start;
         }
@@ -64,11 +64,10 @@
             padding: 30px;
             border-radius: 15px;
             border: 2px solid #3498db;
-            min-height: 600px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
@@ -76,15 +75,15 @@
             margin-bottom: 8px;
             font-weight: bold;
             color: #2c3e50;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             border: 2px solid #ecf0f1;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            border-radius: 8px;
+            font-size: 1rem;
             transition: border-color 0.3s ease;
         }
 
@@ -96,28 +95,31 @@
 
         .calculate-btn {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(45deg, #3498db, #2980b9);
+            padding: 20px;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
 
         .calculate-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(45deg, #c0392b, #a93226);
         }
 
         .calculate-btn:active {
             transform: translateY(-1px);
         }
 
-        .result-tabs {
+        .return-tabs {
             display: flex;
             margin-bottom: 20px;
             border-radius: 10px;
@@ -125,7 +127,7 @@
             border: 2px solid #ecf0f1;
         }
 
-        .result-tab {
+        .return-tab {
             flex: 1;
             padding: 15px;
             background: #ecf0f1;
@@ -134,11 +136,20 @@
             font-weight: bold;
             transition: all 0.3s ease;
             color: #2c3e50;
+            font-size: 1rem;
         }
 
-        .result-tab.active {
+        .return-tab.active {
             background: #3498db;
             color: white;
+        }
+
+        .return-tab:hover {
+            background: #d5dbdb;
+        }
+
+        .return-tab.active:hover {
+            background: #2980b9;
         }
 
         .result-content {
@@ -155,11 +166,42 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .summary-card {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .summary-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            padding: 8px 0;
+        }
+
+        .summary-item:last-child {
+            border-top: 2px solid rgba(255,255,255,0.3);
+            padding-top: 15px;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
         .result-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            background: white;
         }
 
         .result-table th {
@@ -167,54 +209,33 @@
             color: white;
             padding: 12px 8px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            font-weight: bold;
         }
 
         .result-table td {
             padding: 10px 8px;
             text-align: center;
             border-bottom: 1px solid #ecf0f1;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .result-table tr:nth-child(even) {
             background: #f8f9fa;
         }
 
-        .result-table tr:nth-child(5n) {
-            background: #e8f5e8;
+        .highlight-row {
+            background: #fff3cd !important;
             font-weight: bold;
         }
 
-        .summary-card {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .summary-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .summary-item:last-child {
-            border-top: 2px solid rgba(255,255,255,0.3);
-            padding-top: 10px;
+        .final-row {
+            background: #d4edda !important;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 0.9rem !important;
         }
 
-        .comparison-chart {
+        .comparison-container {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
@@ -225,11 +246,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding: 15px;
+            margin-bottom: 12px;
+            padding: 12px;
             background: white;
-            border-radius: 8px;
-            border-left: 5px solid #3498db;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
         }
 
         .return-label {
@@ -238,7 +259,7 @@
         }
 
         .return-value {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #27ae60;
         }
@@ -246,30 +267,46 @@
         .info-box {
             background: #e8f4fd;
             border: 2px solid #3498db;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 15px;
             margin-top: 20px;
         }
 
         .info-box h4 {
             color: #2980b9;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-size: 1rem;
         }
 
         .info-box ul {
-            margin-left: 20px;
+            margin-left: 15px;
             color: #34495e;
         }
 
         .info-box li {
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+
+        .placeholder {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 60px 20px;
+        }
+
+        .placeholder h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .placeholder p {
+            font-size: 1.1rem;
         }
 
         @media (max-width: 768px) {
             .calculator-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
                 padding: 20px;
             }
             
@@ -277,30 +314,9 @@
                 font-size: 2rem;
             }
             
-            .result-tabs {
+            .return-tabs {
                 flex-direction: column;
             }
-            
-            .result-table {
-                font-size: 0.8rem;
-            }
-            
-            .result-table th,
-            .result-table td {
-                padding: 8px 4px;
-            }
-        }
-
-        .highlight-row {
-            background: #fff3cd !important;
-            border: 2px solid #ffc107 !important;
-        }
-
-        .final-amount {
-            background: #d4edda !important;
-            border: 2px solid #28a745 !important;
-            font-weight: bold;
-            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -308,59 +324,52 @@
     <div class="calculator-container">
         <div class="header">
             <h1>💰 Kalkulator DPLK</h1>
-            <p>Simulasi Dana Pensiun Lembaga Keuangan - Bank Sulselbar</p>
+            <p>Simulasi Dana Pensiun dengan 3 Skenario Return: 6%, 6.25%, 6.5%</p>
         </div>
 
         <div class="calculator-content">
             <!-- Input Section -->
             <div class="input-section">
                 <h2 style="text-align: center; margin-bottom: 25px; color: #2c3e50;">
-                    📝 Data Personal Anda
+                    📝 Input Data Anda
                 </h2>
 
                 <div class="form-group">
-                    <label for="nama">👤 Nama Lengkap</label>
-                    <input type="text" id="nama" placeholder="Masukkan nama Anda" value="Pak Darul">
+                    <label for="nama">👤 Nama</label>
+                    <input type="text" id="nama" placeholder="Nama Anda" value="Pak Budi">
                 </div>
 
                 <div class="form-group">
-                    <label for="currentAge">🎂 Usia Saat Ini (tahun)</label>
-                    <input type="number" id="currentAge" placeholder="Contoh: 25" min="18" max="65" value="25">
+                    <label for="currentAge">🎂 Usia Sekarang</label>
+                    <input type="number" id="currentAge" placeholder="25" min="18" max="65" value="25">
                 </div>
 
                 <div class="form-group">
-                    <label for="retirementAge">🎯 Target Usia Pensiun</label>
+                    <label for="retirementAge">🎯 Usia Pensiun</label>
                     <select id="retirementAge">
                         <option value="55" selected>55 tahun</option>
                         <option value="56">56 tahun</option>
                         <option value="57">57 tahun</option>
                         <option value="58">58 tahun</option>
                         <option value="60">60 tahun</option>
-                        <option value="65">65 tahun</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="monthlyContribution">💳 Iuran Bulanan (Rp)</label>
-                    <input type="number" id="monthlyContribution" placeholder="Minimal: 150.000" min="150000" step="50000" value="150000">
+                    <label for="monthlyContribution">💰 Iuran Bulanan (Rp)</label>
+                    <input type="number" id="monthlyContribution" placeholder="150000" min="150000" step="50000" value="150000">
                 </div>
 
-                <div class="form-group">
-                    <label for="additionalContribution">💰 Iuran Tambahan Tahunan (Opsional)</label>
-                    <input type="number" id="additionalContribution" placeholder="Contoh: 1.000.000" min="0" step="100000" value="0">
-                </div>
-
-                <button class="calculate-btn" onclick="calculateAllScenarios()">
-                    🔥 Hitung Simulasi DPLK!
+                <button class="calculate-btn" onclick="hitungSemuaSkenario()">
+                    🔥 HITUNG SIMULASI DPLK!
                 </button>
 
                 <div class="info-box">
-                    <h4>ℹ️ Informasi Penting:</h4>
+                    <h4>ℹ️ Asumsi Return:</h4>
                     <ul>
-                        <li>Minimal iuran: <strong>Rp 150.000/bulan</strong></li>
-                        <li>Return rate berdasarkan <strong>historical performance</strong></li>
-                        <li>Hasil sudah dikurangi <strong>biaya administrasi dan pengelolaan</strong></li>
-                        <li>Simulasi ini untuk <strong>ilustrasi</strong>, hasil aktual dapat berbeda</li>
+                        <li><strong>6.0%</strong> - Skenario Konservatif</li>
+                        <li><strong>6.25%</strong> - Skenario Moderat</li>
+                        <li><strong>6.5%</strong> - Skenario Optimis</li>
                     </ul>
                 </div>
             </div>
@@ -372,28 +381,32 @@
                 </h2>
 
                 <div id="resultsContainer" style="display: none;">
-                    <!-- Tabs for different return rates -->
-                    <div class="result-tabs">
-                        <button class="result-tab active" onclick="showResult('6.0')">Return 6.0%</button>
-                        <button class="result-tab" onclick="showResult('6.25')">Return 6.25%</button>
-                        <button class="result-tab" onclick="showResult('6.5')">Return 6.5%</button>
+                    <!-- Return Rate Tabs -->
+                    <div class="return-tabs">
+                        <button class="return-tab active" onclick="tampilkanHasil('6.0')">6.0%</button>
+                        <button class="return-tab" onclick="tampilkanHasil('6.25')">6.25%</button>
+                        <button class="return-tab" onclick="tampilkanHasil('6.5')">6.5%</button>
                     </div>
 
-                    <!-- Result Content for 6.0% -->
-                    <div id="result-6.0" class="result-content active">
+                    <!-- Results for 6.0% -->
+                    <div id="hasil-6.0" class="result-content active">
                         <div class="summary-card">
-                            <h3>📈 Ringkasan Return 6.0%</h3>
+                            <h3>📈 Return 6.0% per Tahun</h3>
+                            <div class="summary-item">
+                                <span>Masa Investasi:</span>
+                                <span id="periode-6.0">-</span>
+                            </div>
                             <div class="summary-item">
                                 <span>Total Iuran:</span>
-                                <span id="totalContribution-6.0">-</span>
+                                <span id="totalIuran-6.0">-</span>
                             </div>
                             <div class="summary-item">
                                 <span>Hasil Investasi:</span>
-                                <span id="investmentGain-6.0">-</span>
+                                <span id="hasilInvestasi-6.0">-</span>
                             </div>
                             <div class="summary-item">
                                 <span>Dana Pensiun Total:</span>
-                                <span id="finalAmount-6.0">-</span>
+                                <span id="danaPensiun-6.0">-</span>
                             </div>
                         </div>
                         
@@ -403,34 +416,36 @@
                                     <tr>
                                         <th>Tahun</th>
                                         <th>Usia</th>
-                                        <th>Iuran Bulanan</th>
-                                        <th>Iuran Tahunan</th>
-                                        <th>Akumulasi Iuran</th>
+                                        <th>Iuran/Tahun</th>
+                                        <th>Total Iuran</th>
                                         <th>Nilai Investasi</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tableBody-6.0">
-                                    <!-- Data will be populated by JavaScript -->
+                                <tbody id="tabel-6.0">
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Result Content for 6.25% -->
-                    <div id="result-6.25" class="result-content">
+                    <!-- Results for 6.25% -->
+                    <div id="hasil-6.25" class="result-content">
                         <div class="summary-card">
-                            <h3>📈 Ringkasan Return 6.25%</h3>
+                            <h3>📈 Return 6.25% per Tahun</h3>
+                            <div class="summary-item">
+                                <span>Masa Investasi:</span>
+                                <span id="periode-6.25">-</span>
+                            </div>
                             <div class="summary-item">
                                 <span>Total Iuran:</span>
-                                <span id="totalContribution-6.25">-</span>
+                                <span id="totalIuran-6.25">-</span>
                             </div>
                             <div class="summary-item">
                                 <span>Hasil Investasi:</span>
-                                <span id="investmentGain-6.25">-</span>
+                                <span id="hasilInvestasi-6.25">-</span>
                             </div>
                             <div class="summary-item">
                                 <span>Dana Pensiun Total:</span>
-                                <span id="finalAmount-6.25">-</span>
+                                <span id="danaPensiun-6.25">-</span>
                             </div>
                         </div>
                         
@@ -440,34 +455,36 @@
                                     <tr>
                                         <th>Tahun</th>
                                         <th>Usia</th>
-                                        <th>Iuran Bulanan</th>
-                                        <th>Iuran Tahunan</th>
-                                        <th>Akumulasi Iuran</th>
+                                        <th>Iuran/Tahun</th>
+                                        <th>Total Iuran</th>
                                         <th>Nilai Investasi</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tableBody-6.25">
-                                    <!-- Data will be populated by JavaScript -->
+                                <tbody id="tabel-6.25">
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Result Content for 6.5% -->
-                    <div id="result-6.5" class="result-content">
+                    <!-- Results for 6.5% -->
+                    <div id="hasil-6.5" class="result-content">
                         <div class="summary-card">
-                            <h3>📈 Ringkasan Return 6.5%</h3>
+                            <h3>📈 Return 6.5% per Tahun</h3>
+                            <div class="summary-item">
+                                <span>Masa Investasi:</span>
+                                <span id="periode-6.5">-</span>
+                            </div>
                             <div class="summary-item">
                                 <span>Total Iuran:</span>
-                                <span id="totalContribution-6.5">-</span>
+                                <span id="totalIuran-6.5">-</span>
                             </div>
                             <div class="summary-item">
                                 <span>Hasil Investasi:</span>
-                                <span id="investmentGain-6.5">-</span>
+                                <span id="hasilInvestasi-6.5">-</span>
                             </div>
                             <div class="summary-item">
                                 <span>Dana Pensiun Total:</span>
-                                <span id="finalAmount-6.5">-</span>
+                                <span id="danaPensiun-6.5">-</span>
                             </div>
                         </div>
                         
@@ -477,259 +494,195 @@
                                     <tr>
                                         <th>Tahun</th>
                                         <th>Usia</th>
-                                        <th>Iuran Bulanan</th>
-                                        <th>Iuran Tahunan</th>
-                                        <th>Akumulasi Iuran</th>
+                                        <th>Iuran/Tahun</th>
+                                        <th>Total Iuran</th>
                                         <th>Nilai Investasi</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tableBody-6.5">
-                                    <!-- Data will be populated by JavaScript -->
+                                <tbody id="tabel-6.5">
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Comparison Chart -->
-                    <div class="comparison-chart">
+                    <!-- Comparison -->
+                    <div class="comparison-container">
                         <h4 style="text-align: center; margin-bottom: 15px; color: #2c3e50;">
-                            🔄 Perbandingan 3 Skenario Return
+                            🔄 Perbandingan 3 Skenario
                         </h4>
-                        <div id="comparisonContainer">
-                            <!-- Comparison will be populated by JavaScript -->
+                        <div id="perbandingan">
                         </div>
                     </div>
                 </div>
 
-                <!-- Placeholder when no calculation -->
-                <div id="placeholder" style="text-align: center; color: #7f8c8d; padding: 50px;">
-                    <h3>📊 Hasil Simulasi Akan Muncul Di Sini</h3>
-                    <p>Isi data personal Anda dan tekan tombol "Hitung Simulasi DPLK!"</p>
+                <!-- Placeholder -->
+                <div id="placeholder" class="placeholder">
+                    <h3>📊 Simulasi DPLK</h3>
+                    <p>Isi data di sebelah kiri dan klik<br><strong>"HITUNG SIMULASI DPLK!"</strong></p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Format currency to Indonesian Rupiah
-        function formatCurrency(amount) {
-            return 'Rp ' + amount.toLocaleString('id-ID');
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toLocaleString('id-ID');
         }
 
-        // Calculate future value of annuity with compound interest
-        function calculateFutureValue(monthlyPayment, annualRate, years) {
-            const monthlyRate = annualRate / 12 / 100;
-            const totalMonths = years * 12;
+        function hitungFutureValue(iuranBulanan, returnTahunan, tahun) {
+            const returnBulanan = returnTahunan / 12 / 100;
+            const totalBulan = tahun * 12;
             
-            if (monthlyRate === 0) {
-                return monthlyPayment * totalMonths;
+            if (returnBulanan === 0) {
+                return iuranBulanan * totalBulan;
             }
             
-            return monthlyPayment * (((1 + monthlyRate) ** totalMonths - 1) / monthlyRate);
+            return iuranBulanan * (((1 + returnBulanan) ** totalBulan - 1) / returnBulanan);
         }
 
-        // Calculate with additional annual contribution
-        function calculateWithAdditionalContribution(monthlyPayment, additionalAnnual, annualRate, years) {
-            // Monthly contribution future value
-            const monthlyFV = calculateFutureValue(monthlyPayment, annualRate, years);
+        function hitungSemuaSkenario() {
+            console.log('Tombol diklik!'); // Debug
             
-            // Additional annual contribution future value
-            let additionalFV = 0;
-            if (additionalAnnual > 0) {
-                const rate = annualRate / 100;
-                for (let i = 1; i <= years; i++) {
-                    additionalFV += additionalAnnual * ((1 + rate) ** (years - i));
-                }
-            }
-            
-            return monthlyFV + additionalFV;
-        }
-
-        function calculateAllScenarios() {
             const nama = document.getElementById('nama').value || 'Peserta';
-            const currentAge = parseInt(document.getElementById('currentAge').value);
-            const retirementAge = parseInt(document.getElementById('retirementAge').value);
-            const monthlyContribution = parseInt(document.getElementById('monthlyContribution').value);
-            const additionalContribution = parseInt(document.getElementById('additionalContribution').value) || 0;
+            const usiaSekarang = parseInt(document.getElementById('currentAge').value);
+            const usiaPensiun = parseInt(document.getElementById('retirementAge').value);
+            const iuranBulanan = parseInt(document.getElementById('monthlyContribution').value);
 
-            // Validation
-            if (!currentAge || !monthlyContribution || currentAge >= retirementAge || monthlyContribution < 150000) {
-                alert('⚠️ Mohon periksa input Anda:\n• Usia harus valid\n• Usia pensiun harus lebih besar dari usia saat ini\n• Iuran minimal Rp 150.000');
+            // Validasi
+            if (!usiaSekarang || !iuranBulanan || usiaSekarang >= usiaPensiun || iuranBulanan < 150000) {
+                alert('⚠️ Mohon periksa input:\n• Usia harus valid\n• Usia pensiun > usia sekarang\n• Iuran minimal Rp 150.000');
                 return;
             }
 
-            const investmentPeriod = retirementAge - currentAge;
+            const masaInvestasi = usiaPensiun - usiaSekarang;
             const returnRates = [6.0, 6.25, 6.5];
 
-            // Calculate for each return rate
+            console.log('Data valid, mulai hitung...'); // Debug
+
+            // Hitung untuk setiap return rate
             returnRates.forEach(rate => {
                 const rateKey = rate.toString();
-                const totalContribution = (monthlyContribution * 12 + additionalContribution) * investmentPeriod;
-                const futureValue = calculateWithAdditionalContribution(
-                    monthlyContribution, 
-                    additionalContribution, 
-                    rate, 
-                    investmentPeriod
-                );
-                const investmentGain = futureValue - totalContribution;
+                const totalIuran = iuranBulanan * 12 * masaInvestasi;
+                const nilaiAkhir = hitungFutureValue(iuranBulanan, rate, masaInvestasi);
+                const hasilInvestasi = nilaiAkhir - totalIuran;
+
+                console.log(`Rate ${rate}%: ${formatRupiah(nilaiAkhir)}`); // Debug
 
                 // Update summary
-                document.getElementById(`totalContribution-${rateKey}`).textContent = formatCurrency(totalContribution);
-                document.getElementById(`investmentGain-${rateKey}`).textContent = formatCurrency(investmentGain);
-                document.getElementById(`finalAmount-${rateKey}`).textContent = formatCurrency(futureValue);
+                document.getElementById(`periode-${rateKey}`).textContent = masaInvestasi + ' tahun';
+                document.getElementById(`totalIuran-${rateKey}`).textContent = formatRupiah(totalIuran);
+                document.getElementById(`hasilInvestasi-${rateKey}`).textContent = formatRupiah(hasilInvestasi);
+                document.getElementById(`danaPensiun-${rateKey}`).textContent = formatRupiah(nilaiAkhir);
 
-                // Generate year-by-year table
-                generateYearlyTable(nama, currentAge, monthlyContribution, additionalContribution, rate, investmentPeriod, rateKey);
+                // Generate table
+                buatTabelTahunan(usiaSekarang, iuranBulanan, rate, masaInvestasi, rateKey);
             });
 
-            // Generate comparison
-            generateComparison(monthlyContribution, additionalContribution, investmentPeriod, returnRates);
+            // Buat perbandingan
+            buatPerbandingan(iuranBulanan, masaInvestasi, returnRates);
 
-            // Show results
+            // Tampilkan hasil
             document.getElementById('placeholder').style.display = 'none';
             document.getElementById('resultsContainer').style.display = 'block';
         }
 
-        function generateYearlyTable(nama, currentAge, monthlyContribution, additionalContribution, returnRate, years, rateKey) {
-            const tbody = document.getElementById(`tableBody-${rateKey}`);
+        function buatTabelTahunan(usiaSekarang, iuranBulanan, returnRate, tahun, rateKey) {
+            const tbody = document.getElementById(`tabel-${rateKey}`);
             tbody.innerHTML = '';
 
-            let cumulativeContribution = 0;
-            let investmentValue = 0;
-            const monthlyRate = returnRate / 12 / 100;
+            let totalIuranKumulatif = 0;
+            let nilaiInvestasi = 0;
+            const returnBulanan = returnRate / 12 / 100;
+            const iuranTahunan = iuranBulanan * 12;
 
-            for (let year = 1; year <= years; year++) {
-                const age = currentAge + year;
-                const yearlyContribution = monthlyContribution * 12 + additionalContribution;
-                cumulativeContribution += yearlyContribution;
+            for (let t = 1; t <= tahun; t++) {
+                const usia = usiaSekarang + t;
+                totalIuranKumulatif += iuranTahunan;
 
-                // Calculate investment value for this year
-                // Add this year's monthly contributions with compound interest
-                for (let month = 1; month <= 12; month++) {
-                    investmentValue = (investmentValue + monthlyContribution) * (1 + monthlyRate);
-                }
-                
-                // Add additional annual contribution at year end
-                if (additionalContribution > 0) {
-                    investmentValue += additionalContribution;
-                }
+                // Hitung nilai investasi sampai tahun ini
+                nilaiInvestasi = hitungFutureValue(iuranBulanan, returnRate, t);
 
                 const row = document.createElement('tr');
                 
-                // Highlight every 5 years and final year
-                if (year % 5 === 0 || year === years) {
-                    row.className = year === years ? 'final-amount' : 'highlight-row';
+                // Highlight setiap 5 tahun dan tahun terakhir
+                if (t % 5 === 0) {
+                    row.className = 'highlight-row';
+                }
+                if (t === tahun) {
+                    row.className = 'final-row';
                 }
 
                 row.innerHTML = `
-                    <td><strong>${year}</strong></td>
-                    <td>${age}</td>
-                    <td>${formatCurrency(monthlyContribution)}</td>
-                    <td>${formatCurrency(yearlyContribution)}</td>
-                    <td>${formatCurrency(cumulativeContribution)}</td>
-                    <td><strong>${formatCurrency(Math.round(investmentValue))}</strong></td>
+                    <td><strong>${t}</strong></td>
+                    <td>${usia}</td>
+                    <td>${formatRupiah(iuranTahunan)}</td>
+                    <td>${formatRupiah(totalIuranKumulatif)}</td>
+                    <td><strong>${formatRupiah(Math.round(nilaiInvestasi))}</strong></td>
                 `;
                 
                 tbody.appendChild(row);
             }
         }
 
-        function generateComparison(monthlyContribution, additionalContribution, years, returnRates) {
-            const container = document.getElementById('comparisonContainer');
+        function buatPerbandingan(iuranBulanan, tahun, returnRates) {
+            const container = document.getElementById('perbandingan');
             container.innerHTML = '';
 
+            const hasil = [];
             returnRates.forEach(rate => {
-                const totalContribution = (monthlyContribution * 12 + additionalContribution) * years;
-                const futureValue = calculateWithAdditionalContribution(
-                    monthlyContribution, 
-                    additionalContribution, 
-                    rate, 
-                    years
-                );
-                const gain = futureValue - totalContribution;
-                const gainPercentage = ((gain / totalContribution) * 100).toFixed(1);
+                const totalIuran = iuranBulanan * 12 * tahun;
+                const nilaiAkhir = hitungFutureValue(iuranBulanan, rate, tahun);
+                hasil.push({ rate, nilaiAkhir });
 
                 const item = document.createElement('div');
                 item.className = 'comparison-item';
                 item.innerHTML = `
-                    <div>
-                        <div class="return-label">Return ${rate}% per tahun</div>
-                        <div style="font-size: 0.9rem; color: #7f8c8d;">
-                            Keuntungan: ${gainPercentage}% dari total iuran
-                        </div>
-                    </div>
-                    <div class="return-value">${formatCurrency(Math.round(futureValue))}</div>
+                    <div class="return-label">Return ${rate}%/tahun</div>
+                    <div class="return-value">${formatRupiah(Math.round(nilaiAkhir))}</div>
                 `;
                 container.appendChild(item);
             });
 
-            // Add difference analysis
-            const lowReturn = calculateWithAdditionalContribution(monthlyContribution, additionalContribution, 6.0, years);
-            const highReturn = calculateWithAdditionalContribution(monthlyContribution, additionalContribution, 6.5, years);
-            const difference = highReturn - lowReturn;
+            // Analisis selisih
+            const selisih = hasil[2].nilaiAkhir - hasil[0].nilaiAkhir; // 6.5% - 6.0%
+            const persenSelisih = ((selisih / hasil[0].nilaiAkhir) * 100).toFixed(1);
 
-            const analysisDiv = document.createElement('div');
-            analysisDiv.style.marginTop = '20px';
-            analysisDiv.style.padding = '15px';
-            analysisDiv.style.background = '#fff3cd';
-            analysisDiv.style.borderRadius = '8px';
-            analysisDiv.style.border = '2px solid #ffc107';
-            analysisDiv.innerHTML = `
-                <h4 style="color: #856404; margin-bottom: 10px;">💡 Analisis Perbedaan Return:</h4>
-                <p style="color: #856404; margin: 0;">
-                    Selisih antara return 6.0% dan 6.5% adalah <strong>${formatCurrency(Math.round(difference))}</strong>.
-                    Dengan return yang lebih tinggi hanya 0.5%, Anda bisa mendapat tambahan dana sebesar ini!
+            const analisis = document.createElement('div');
+            analisis.style.marginTop = '15px';
+            analisis.style.padding = '15px';
+            analisis.style.background = '#fff3cd';
+            analisis.style.borderRadius = '8px';
+            analisis.style.border = '2px solid #ffc107';
+            analisis.innerHTML = `
+                <h4 style="color: #856404; margin-bottom: 8px;">💡 Analisis:</h4>
+                <p style="color: #856404; margin: 0; font-size: 0.95rem;">
+                    Selisih return 6.0% vs 6.5% = <strong>${formatRupiah(Math.round(selisih))}</strong> 
+                    (${persenSelisih}% lebih besar). Hanya 0.5% perbedaan return bisa memberikan dampak besar!
                 </p>
             `;
-            container.appendChild(analysisDiv);
+            container.appendChild(analisis);
         }
 
-        function showResult(rate) {
-            // Hide all result contents
+        function tampilkanHasil(rate) {
+            // Sembunyikan semua content
             const contents = document.querySelectorAll('.result-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Remove active from all tabs
-            const tabs = document.querySelectorAll('.result-tab');
+            // Remove active dari semua tab
+            const tabs = document.querySelectorAll('.return-tab');
             tabs.forEach(tab => tab.classList.remove('active'));
 
-            // Show selected content and activate tab
-            document.getElementById(`result-${rate}`).classList.add('active');
+            // Tampilkan content yang dipilih
+            document.getElementById(`hasil-${rate}`).classList.add('active');
             event.target.classList.add('active');
         }
+
+        // Test function - untuk memastikan JavaScript bekerja
+        console.log('Kalkulator DPLK siap digunakan!');
         
-
-        // Auto-calculate when values change
+        // Event listener untuk auto-calculate saat input berubah
         document.addEventListener('DOMContentLoaded', function() {
-            const inputs = ['currentAge', 'retirementAge', 'monthlyContribution', 'additionalContribution'];
-            inputs.forEach(id => {
-                document.getElementById(id).addEventListener('input', function() {
-                    // Auto-calculate if all required fields are filled
-                    const age = document.getElementById('currentAge').value;
-                    const retirement = document.getElementById('retirementAge').value;
-                    const contribution = document.getElementById('monthlyContribution').value;
-                    
-                    if (age && retirement && contribution && contribution >= 150000) {
-                        // Add small delay for better UX
-                        setTimeout(calculateAllScenarios, 500);
-                    }
-                });
-            });
-        });
-
-        // Format input as currency while typing
-        document.getElementById('monthlyContribution').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value) {
-                e.target.value = value;
-            }
-        });
-
-        document.getElementById('additionalContribution').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value) {
-                e.target.value = value;
-            }
+            console.log('DOM loaded, event listeners ready');
         });
     </script>
 </body>
